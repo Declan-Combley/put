@@ -3,10 +3,9 @@
 #include <assert.h>
 #include <errno.h>
 
+// TODO: Swap the order in which the file and text is provided
 int main(int argc, char **argv)
 {
-    (void) argc;
-
     assert(argv != NULL);
     char *program = *argv++;
 
@@ -16,6 +15,12 @@ int main(int argc, char **argv)
         exit(1);
     }
 
+    if (argc > 3) {
+        fprintf(stderr, "ERROR: usage of %s is invalid \n", program);
+        fprintf(stderr, "Expected Format: nat <file> '<text>' \n");
+        exit(1);
+    }
+    
     char *file_path = *argv++;
     char *text = *argv;
 
@@ -27,7 +32,9 @@ int main(int argc, char **argv)
     }
     
     fputs(text, file);
-
+    fputs("\n", file);    
+    fputs("\0", file);
+    
     int close_value = fclose(file);
     
     if (close_value != 0) {
