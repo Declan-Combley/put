@@ -10,14 +10,14 @@ int main(int argc, char **argv)
     char *program = *argv++;
 
     if (*argv == NULL) {
-        fprintf(stderr, "ERROR: usage of %s is invalid \n", program);
-        fprintf(stderr, "ERROR: must have a file path specified \n");
+        fprintf(stderr, "Error: usage of %s is invalid \n", program);
+        fprintf(stderr, "Error: must have a file path specified \n");
         exit(1);
     }
 
     if (argc > 3) {
-        fprintf(stderr, "ERROR: usage of %s is invalid \n", program);
-        fprintf(stderr, "Expected Format: nat <file> '<text>' \n");
+        fprintf(stderr, "Error: usage of %s is invalid \n", program);
+        fprintf(stderr, "Expected Format: put <file> '<text>' \n");
         exit(1);
     }
     
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     FILE *file = fopen(file_path, "a");
 
     if (file == NULL) {
-        fprintf(stderr, "ERROR: %s could not be opened and exited with the error: %d \n", file_path, errno);
+        fprintf(stderr, "Error: %s could not be opened and exited with the error: %d \n", file_path, errno);
         exit(errno);
     }
     
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     int close_value = fclose(file);
     
     if (close_value != 0) {
-        fprintf(stderr, "ERROR: could not close %s and exited with %d error code", file_path, errno);
+        fprintf(stderr, "Error: could not close %s and exited with %d error code", file_path, errno);
         exit(errno);
     }
 
