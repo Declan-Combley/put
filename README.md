@@ -1,17 +1,20 @@
-# put
+# Put
 
-A simple way to append text to the end of a file
+A simple way to append text to the end of a file.
 
 
-# quickstart
+# Quickstart
 ```console
 $ make
 $ ./put <file> "<text>"
 ```
 
-# how to use it
+# How To Use It
 
 To make this binary usable make an alias to it in your .bashrc
 ```bash
 alias put='<path to binary>'
 ```
+
+## Note
+This is equivalent to ```echo "some text" >> somefile```
